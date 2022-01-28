@@ -16,6 +16,15 @@ namespace _2022_01_28_Opening_weekend
             });
 
             Console.WriteLine($"3. feladat: Filmek száma az állományban: {filmek.Count} db");
+
+            long uipBevetel = 0;
+            filmek.ForEach((f) => {
+                if (f.forgalmazo == "UIP") {
+                    uipBevetel += f.bevetel;
+                }
+            });
+
+            Console.WriteLine($"4. feladat: UIP Duna Film forgalmazó 1. hetes bevételeinek összege: {uipBevetel.ToString("C2")}");
             Console.ReadKey();
         }
     }
