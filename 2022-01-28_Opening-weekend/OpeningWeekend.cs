@@ -45,6 +45,28 @@ namespace _2022_01_28_Opening_weekend
             });
 
             Console.WriteLine(vanFilm ? "6. feladat: Volt ilyen film!" : "6. feladat: Nem volt ilyen film!");
+
+            Dictionary<string, int> forgalmazoEsFilmek = new Dictionary<string, int>();
+
+            filmek.ForEach((f) => {
+                if (!forgalmazoEsFilmek.ContainsKey(f.forgalmazo)) {
+                    forgalmazoEsFilmek.Add(f.forgalmazo, 1);
+                } else {
+                    forgalmazoEsFilmek[f.forgalmazo]++;
+                }
+            });
+
+            List<string> fileKimenet = new List<string>();
+            fileKimenet.Add("forgalmazo;filmekSzama");
+
+            foreach (var f in forgalmazoEsFilmek) {
+                if (f.Value > 1) {
+                    fileKimenet.Add($"{f.Key};{f.Value}");
+                }
+            }
+
+            File.WriteAllLines("stat.csv", fileKimenet);
+
             Console.ReadKey();
         }
     }
