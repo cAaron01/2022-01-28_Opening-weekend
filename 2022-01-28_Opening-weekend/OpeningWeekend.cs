@@ -34,6 +34,17 @@ namespace _2022_01_28_Opening_weekend
             Console.WriteLine($"\tForgalmazó: {legtobbLatogato.forgalmazo}");
             Console.WriteLine($"\tBevétel az első héten: {legtobbLatogato.bevetel.ToString("C2")}");
             Console.WriteLine($"\tLátogatók száma: {legtobbLatogato.latogatok} fő");
+
+            bool vanFilm = false;
+            filmek.ForEach((f) => {
+                string[] dbMagyarCim = f.magyarCim.Split(' ');
+                string[] dbEredetiCim = f.eredetiCim.Split(' ');
+                if (dbMagyarCim[0].StartsWith("W") && dbMagyarCim[1].StartsWith("W") && dbEredetiCim[0].StartsWith("W") && dbEredetiCim[1].StartsWith("W")) {
+                    vanFilm = true;
+                }
+            });
+
+            Console.WriteLine(vanFilm ? "6. feladat: Volt ilyen film!" : "6. feladat: Nem volt ilyen film!");
             Console.ReadKey();
         }
     }
