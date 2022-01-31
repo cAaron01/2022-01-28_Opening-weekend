@@ -10,7 +10,7 @@ namespace _2022_01_28_Opening_weekend
     {
         public string eredetiCim { get; set; }
         public string magyarCim { get; set; }
-        public string bemutato { get; set; }
+        public DateTime bemutato { get; set; }
         public string forgalmazo { get; set; }
         public int bevetel { get; set; }
         public int latogatok { get; set; }
@@ -19,7 +19,7 @@ namespace _2022_01_28_Opening_weekend
             string[] db = s.Split(';');
             eredetiCim = db[0];
             magyarCim = db[1];
-            bemutato = db[2];
+            bemutato = DateTime.Parse(db[2]);
             forgalmazo = db[3];
             bevetel = int.Parse(db[4]);
             latogatok = int.Parse(db[5]);
