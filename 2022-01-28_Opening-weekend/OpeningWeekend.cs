@@ -67,6 +67,27 @@ namespace _2022_01_28_Opening_weekend
 
             File.WriteAllLines("stat.csv", fileKimenet);
 
+            List<DateTime> interComBemutatok = new List<DateTime>();
+
+            filmek.ForEach((f) => {
+                if (f.forgalmazo == "InterCom") {
+                    interComBemutatok.Add(f.bemutato);
+                }
+            });
+
+            int legnagyobbKulonbseg = 0;
+
+            for (int i = 0; i < interComBemutatok.Count; i++)  {
+                if (i != 0) {
+                    int kulonbsegSzamitott = (interComBemutatok[i] - interComBemutatok[i - 1]).Days;
+                    if (kulonbsegSzamitott > legnagyobbKulonbseg) {
+                        legnagyobbKulonbseg = kulonbsegSzamitott;
+                    }
+                }
+            }
+
+            Console.WriteLine($"8. feladat: A leghosszabb időszak két InterCom-os bemutató között: {legnagyobbKulonbseg} nap");
+
             Console.ReadKey();
         }
     }
